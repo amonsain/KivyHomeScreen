@@ -1,0 +1,38 @@
+
+
+<MainLayout>:
+    orientation: 'horizontal'
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint:0.8,0.9
+        RadioButton:
+            stationid: 1
+            stationname:'France Inter'
+            background_color:[0.91,0,0.18,1]      
+        RadioButton:
+            stationname:'France Info'
+            stationid: 2
+            background_color:[1,0.95,0,1]
+        RadioButton:
+            stationname:'France Culture'
+            stationid: 3
+            background_color:[0.39,0.11,0.51,1]
+        RadioButton:
+            stationname:'France Musique'
+            stationid: 4
+            background_color:[0.63,0,0.22,1]
+        RadioButton:
+            stationname:'FIP'
+            stationid: 5
+            background_color:[0.91,0,0.22,1]   
+    BoxLayout:
+        orientation:'vertical'
+        size_hint:0.2,0.9
+        background_color:[1,1,1,1]
+        VolumeSlider:
+            id: VolumeSlider
+            orientation:'vertical' 
+            size_hint:1,0.85
+        Label:
+            text: 'Volume %s' % int(VolumeSlider.value) if VolumeSlider.value else 'Off'
+            size_hint:1,0.15
