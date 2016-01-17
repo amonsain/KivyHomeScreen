@@ -181,7 +181,7 @@ class WeatherDay(BoxLayout):
 		self.dayweatherlist = get_daily_weather(MBurl)
 		self.clear_widgets()
 		self.add_widget(Label(text=str(self.dayweatherlist[self.dayid].Date),color=self.textcolor,size_hint=[1,0.2]))
-		self.add_widget(Image(source=get_weathericon(self.dayweatherlist[self.dayid].Picto,'forecast','1'),size_hint=[1,0.3]))
+		self.add_widget(Image(source=get_weathericon(self.dayweatherlist[self.dayid].Picto,'daily','1'),size_hint=[1,0.3]))
 		self.add_widget(BoxLayout(size_hint=[1,0.1]))		
 		self.add_widget(Label(text='[b]'+'Temperatures'+ '[/b]', markup=True,color=self.textcolor,size_hint=[1,0.1]))
 		self.add_widget(Label(text='Maxi: '+ str(self.dayweatherlist[self.dayid].ForecastMaxTemp),color=self.textcolor,size_hint=[1,0.1]))
