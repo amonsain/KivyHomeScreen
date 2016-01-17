@@ -7,6 +7,7 @@ from KivyWeather import *
 from ClockButton import ClockButton
 import locale
 import subprocess
+from backlighttoggle import set_backlight
 
 locale.setlocale(locale.LC_ALL, 'fr_FR')
 
@@ -16,14 +17,14 @@ def on_motion(self, etype, motionevent):
 	pass
 
 def screensavermanager(self,*args):
-	subprocess.call(["echo 0 > /sys/class/backlight/rpi_backlight/bl_power"])
+	set_backlight('on')
 	Clock.unschedule(turnscreenoff)
 	print('unschedule previous turn-off')
-	Clock.schedule_once(turnscreenoff,3)
+	Clock.schedule_once(turnscreenoff,300)
 	print('Turn screen on and schedule screen turn shutdown')
 
 def turnscreenoff(self,*args):
-	subprocess.call(["echo 1 > /sys/class/backlight/rpi_backlight/bl_power"])
+	set_backlight('off')
 	print('Screen turns off')
 
 
