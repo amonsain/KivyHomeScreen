@@ -1,0 +1,42 @@
+
+<MainLayout>:
+    orientation: 'vertical'
+    canvas.before:
+        Color:
+            rgba: 0.6, 0.6, 0.6, 1
+        Line: 
+            rectangle: self.x+1,self.y+1,self.width-1,self.height-1
+    BoxLayout:
+        size_hint:1,0.1
+    BoxLayout:
+        size_hint:1,0.9
+        canvas.before:
+            Color:
+                rgba: 0.6, 0.6, 0.6, 1
+            Line: 
+                rectangle: self.x+1,self.y+1,self.width-1,self.height-1
+        TrafficCurrent:
+            size_hint:2,1
+            orientation:'vertical'
+            nom:'Augustin'
+            cartype: 'sedan'
+            start:'Lacroix-Falgarde'
+            destination:'23 bd Victor Hugo, Colomiers'
+            canvas.before:
+                Color:
+                    rgba: 0.6, 0.6, 0.6, 1
+                Line: 
+                    rectangle: self.x+1,self.y+1,self.width-1,self.height-1
+        TrafficCurrent:
+            size_hint:2,1
+            orientation:'vertical'
+            nom:'Albane'
+            cartype: 'city'
+            start:'Av de falgarde, Lacroix-Falgarde'
+            destination:'31 Rue des Cosmonautes, 31400 Toulouse'
+            canvas.before:
+                Color:
+                    rgba: 0.6, 0.6, 0.6, 1
+                Line: 
+                    rectangle: self.x+1,self.y+1,self.width-1,self.height-1
+        

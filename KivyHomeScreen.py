@@ -4,6 +4,7 @@ from kivy.modules import inspector
 from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition, FallOutTransition
 from KivyRadio import *
 from KivyWeather import *
+from KivyTraffic import *
 from ClockButton import ClockButton
 import locale
 import subprocess
@@ -44,6 +45,8 @@ class RadioScreen(Screen):
 class WeatherScreen(Screen):
 	pass
 
+class TrafficScreen(Screen):
+	pass
 
 ####### MAIN
 
@@ -54,6 +57,7 @@ class KivyHomeScreenApp(App):
 		init_radio()
 		self.mainlayout.add_widget(RadioScreen(name='RadioScreen'))
 		self.mainlayout.add_widget(WeatherScreen(name='WeatherScreen'))
+		self.mainlayout.add_widget(TrafficScreen(name='TrafficScreen'))		
 		inspector.create_inspector(Window, self.mainlayout)
 		Window.bind(on_motion=on_motion)
 		return self.mainlayout
