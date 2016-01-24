@@ -4,9 +4,11 @@ Kivy is multi-platfom: you can use this program on a Mac or Windows PC
 
 
 Main files are:
+
 KivyHomeScreen.py (main program) & kivyhomescreen.kv (main kivy layout file)
 
 launch command: kivy KivyHomescreen &
+
 "sudo kivy KivyHomescreen &" is required if you are using backlight/screensaver features on the RPi
 
 
