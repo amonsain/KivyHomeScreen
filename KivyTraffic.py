@@ -22,7 +22,6 @@ import urllib
 import json
 
 GMAPIkey = 'AIzaSyAC24-Uuz1Fo04Q3J6gjrJU_v86PPEYFJ0'
-#GMAPURL = 'https://maps.googleapis.com/maps/api/directions/json?mode=driving&'
 
 GMAPURL = 'https://maps.googleapis.com/maps/api/distancematrix/json?mode=driving&'
 
@@ -71,23 +70,25 @@ class TrafficCurrent(BoxLayout):
 		super(TrafficCurrent,self).__init__(*args,**kwargs)
 		print('create Traffic Current')
 		self.textcolor=[0.1,0.55,0.55,1]
+		
+		# force widget update right after creation & schedule updates according to TrafficUpdatePeriod
 		Clock.schedule_once(self.update, 0.5)
 		Clock.schedule_interval(self.update, TrafficUpdatePeriod)
 
 		# could create widgets from here, label them with an id: and update them in the following class method self.ids.idname = ...
+	
 	def update(self, *args):
 		self.traffic = get_transittime(self.start,self.destination)
 		self.clear_widgets()
-		print('updating Traffic info')
-
+		#print('updating Traffic info')
 
 		traffic_icon = './images/'+self.cartype +'-'+self.traffic[3]+'.png'
-		print traffic_icon
+		#print traffic_icon
 
-
-		self.add_widget(Label(text=self.nom,color=self.textcolor,size_hint=[1,0.12],font_size='20sp'))
-		self.add_widget(Label(text='Duree de trajet: '+ self.traffic[1][1:-1],color=self.textcolor,size_hint=[1,0.12],font_size='20sp'))
-		self.add_widget(Label(text='Distance: '+ self.traffic[2][1:-1],color=self.textcolor,size_hint=[1,0.12],font_size='20sp'))
+		# Display Traffic info & pictogram 
+		self.add_widget(Label(text=self.nom,color=self.textcolor,size_hint=[1,0.12],font_size='25sp'))
+		self.add_widget(Label(text='Duree de trajet: '+ self.traffic[1][1:-1],color=self.textcolor,size_hint=[1,0.12],font_size='25sp'))
+		self.add_widget(Label(text='Distance: '+ self.traffic[2][1:-1],color=self.textcolor,size_hint=[1,0.12],font_size='25sp'))
 		self.add_widget(Image(source=traffic_icon,size_hint=[1,0.12]))
 
 

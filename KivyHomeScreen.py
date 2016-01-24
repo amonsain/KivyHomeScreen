@@ -12,14 +12,11 @@ from backlighttoggle import set_backlight
 
 locale.setlocale(locale.LC_ALL, 'fr_FR')
 
-def on_motion(self, etype, motionevent):
-	screensavermanager(self)
-	print(etype)
-	pass
 
-def screensavermanager(self,*args):
+def screensavermanager():
 	set_backlight('on')
 	Clock.unschedule(turnscreenoff)
+	print('ScreenSaverManager called')
 	print('unschedule previous turn-off')
 	Clock.schedule_once(turnscreenoff,300)
 	print('Turn screen on and schedule screen turn shutdown')
@@ -31,12 +28,19 @@ def turnscreenoff(self,*args):
 
 class MyScreenManager(ScreenManager):
 
+	def on_touch_up(self, touch):
+		print('Touch UP event detected!!')
+		touch.grab(self)
+		screensavermanager()
+
+
 	def delayedswitch(self):
+		Clock.unschedule(self.switchtoweather)
 		Clock.schedule_once(self.switchtoweather,30)
-		print('schedule switch back to Weather screen in 30 sec.')
+		print('Schedule switch back to Weather screen in 30 sec.')
 
 	def switchtoweather(self,*args):
-
+		print ('Switching to Weather Screen')
 		self.current = 'WeatherScreen'
 
 class RadioScreen(Screen):
@@ -59,7 +63,6 @@ class KivyHomeScreenApp(App):
 		self.mainlayout.add_widget(WeatherScreen(name='WeatherScreen'))
 		self.mainlayout.add_widget(TrafficScreen(name='TrafficScreen'))		
 		inspector.create_inspector(Window, self.mainlayout)
-		Window.bind(on_motion=on_motion)
 		return self.mainlayout
 
 if __name__ == "__main__":
