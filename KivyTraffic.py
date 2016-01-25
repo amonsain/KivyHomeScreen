@@ -47,7 +47,7 @@ def get_transittime(start,destination):
 			traffic_state = 'low'
 		elif trafficratio > 1.6:
 			traffic_state = 'high'
-		else: trafficratio = 'med'
+		else: traffic_state = 'med'
 
 		transittime.append(duration)
 		transittime.append(duration_traffic)
