@@ -15,8 +15,10 @@ class ClockButton(Button):
 
 	def update(self, *args):
 		self.text = strftime("%A %d %B %H:%M", localtime()).capitalize()
+		self.text = self.text.decode('latin-1')
+		self.text = self.text.encode('utf-8')
 		self.font_size = 40
 		self.markup=True
 		self.color = [1,1,1,1]
 		self.background_color=[0.1,0.55,0.55,1]
-		print(self.text)
+		print('Current date & time: '+ self.text)
